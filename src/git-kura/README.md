@@ -1,7 +1,7 @@
 
 # git-kura (git-kura)
 
-Installs git-kura, a keyed Git worktree resolver.
+Installs [git-kura](https://github.com/tooppoo/git-kura), a keyed Git worktree resolver.
 
 ## Example Usage
 

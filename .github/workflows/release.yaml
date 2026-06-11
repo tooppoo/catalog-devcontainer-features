@@ -1,4 +1,4 @@
-name: "Release Dev Container & Generate Documentation"
+name: "Release Dev Container Features & Generate Documentation"
 on:
   workflow_dispatch:
 
@@ -12,15 +12,6 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
-
-      - name: "Publish Templates"
-        uses: devcontainers/action@1082abd5d2bf3a11abccba70eef98df068277772 # v1
-        with:
-          publish-templates: "true"
-          base-path-to-templates: "./src"
-          generate-docs: "true"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Publish Features"
         uses: devcontainers/action@1082abd5d2bf3a11abccba70eef98df068277772 # v1

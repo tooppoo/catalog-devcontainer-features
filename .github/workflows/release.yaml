@@ -1,4 +1,4 @@
-name: "Release Dev Container Templates & Generate Documentation"
+name: "Release Dev Container & Generate Documentation"
 on:
   workflow_dispatch:
 
@@ -11,7 +11,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: "Publish Templates"
         uses: devcontainers/action@v1
@@ -19,7 +19,6 @@ jobs:
           publish-templates: "true"
           base-path-to-templates: "./src"
           generate-docs: "true"
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

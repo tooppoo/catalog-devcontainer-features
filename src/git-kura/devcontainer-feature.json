@@ -1,6 +1,6 @@
 {
     "id": "git-kura",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "name": "git-kura",
     "description": "Installs git-kura, a keyed Git worktree resolver.",
     "documentationURL": "https://github.com/tooppoo/devcontainer-features/tree/main/src/git-kura",

@@ -15,7 +15,7 @@ Installs git-kura, a keyed Git worktree resolver.
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| version | git-kura release tag to install. Use latest to install the latest release. | string | latest |
+| version | git-kura release tag to install. Use latest to install the latest release. i.e. "0.0.7" | string | latest |
 | install_dir | Directory where git-kura will be installed. | string | /usr/local/bin |
 | require_signature | Require cosign signature verification during installation. | boolean | false |
 

@@ -7,7 +7,9 @@ Installs [git-kura](https://github.com/tooppoo/git-kura), a keyed Git worktree r
 
 ```json
 "features": {
-    "ghcr.io/tooppoo/devcontainer-features/git-kura:0": {}
+    "ghcr.io/tooppoo/devcontainer-features/git-kura:0": {
+      "version": "0.0.7"
+    }
 }
 ```
 

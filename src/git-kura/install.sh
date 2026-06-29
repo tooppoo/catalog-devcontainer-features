@@ -8,6 +8,12 @@ GIT_KURA_VERSION="${VERSION:-latest}"
 INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}"
 REQUIRE_SIGNATURE="${REQUIRE_SIGNATURE:-false}"
 
+main() {
+    check_supported_distribution
+    install_packages
+    run_installer
+}
+
 echo_stderr() {
     echo "$@" >&2
 }
@@ -46,11 +52,38 @@ install_packages() {
     rm -rf /var/lib/apt/lists/*
 }
 
+normalize_git_kura_version() {
+    version="$1"
+
+    case "${version}" in
+        latest)
+            printf '%s\n' "latest"
+            return 0
+            ;;
+    esac
+
+    if printf '%s' "${version}" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+        printf '%s\n' "${version}"
+        return 0
+    fi
+
+    if printf '%s' "${version}" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+        printf 'v%s\n' "${version}"
+        return 0
+    fi
+
+    echo_stderr "Invalid git-kura version: ${version}."
+    echo_stderr "Use 'latest', a release tag such as 'v0.0.6', or a bare semantic version such as '0.0.6'."
+    exit 1
+}
+
 run_installer() {
+    normalized_version="$(normalize_git_kura_version "${GIT_KURA_VERSION}")"
+
     set -- --install-dir "${INSTALL_DIR}"
 
-    if [ "${GIT_KURA_VERSION}" != "latest" ]; then
-        set -- "$@" --version "${GIT_KURA_VERSION}"
+    if [ "${normalized_version}" != "latest" ]; then
+        set -- "$@" --version "${normalized_version}"
     fi
 
     case "${REQUIRE_SIGNATURE}" in
@@ -68,9 +101,8 @@ run_installer() {
     echo "Installing git-kura from ${INSTALLER_URL}"
     # Intentionally calls the upstream installer so release resolution,
     # checksums, and optional signature verification stay owned by git-kura.
+    # This Feature normalizes user-facing version input before delegating.
     curl -fsSL "${INSTALLER_URL}" | sh -s -- "$@"
 }
 
-check_supported_distribution
-install_packages
-run_installer
+main

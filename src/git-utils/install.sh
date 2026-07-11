@@ -5,7 +5,6 @@ REPO="tooppoo/git-utils"
 INSTALLER_URL="https://raw.githubusercontent.com/${REPO}/main/install.sh"
 
 GIT_UTILS_VERSION="${VERSION:-latest}"
-INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}"
 
 main() {
     check_supported_distribution
@@ -82,8 +81,6 @@ normalize_git_utils_version() {
 
 run_installer() {
     normalized_version="$(normalize_git_utils_version "${GIT_UTILS_VERSION}")"
-
-    set -- --install-dir "${INSTALL_DIR}"
 
     if [ "${normalized_version}" != "latest" ]; then
         set -- "$@" --version "${normalized_version}"

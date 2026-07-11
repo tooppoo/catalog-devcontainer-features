@@ -58,7 +58,7 @@ install_packages() {
     rm -rf /var/lib/apt/lists/*
 }
 
-normalize_git-utils_version() {
+normalize_git_utils_version() {
     version="$1"
 
     case "${version}" in

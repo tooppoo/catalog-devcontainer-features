@@ -97,7 +97,7 @@ run_installer() {
     # git-utils's upstream installer. This Feature only normalizes user-facing
     # version input and prepares the Debian/Ubuntu runtime dependencies.
     curl -fsSL "${INSTALLER_URL}" -o "${tmp_installer}"
-    sh "${tmp_installer}" "$@"
+    sh "${tmp_installer}" git-commits-since-tag git-rm-branch
 }
 
 main

@@ -1,6 +1,6 @@
 {
     "id": "git-utils",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "name": "git-utils",
     "description": "Installs git-utils, some small git-sucommands",
     "documentationURL": "https://github.com/tooppoo/catalog-devcontainer-features/tree/main/src/git-utils",

@@ -81,7 +81,7 @@ normalize_git_utils_version() {
 }
 
 run_installer() {
-    normalized_version="$(normalize_git-utils_version "${GIT_UTILS_VERSION}")"
+    normalized_version="$(normalize_git_utils_version "${GIT_UTILS_VERSION}")"
 
     set -- --install-dir "${INSTALL_DIR}"
 

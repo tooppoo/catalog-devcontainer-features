@@ -16,7 +16,6 @@ Installs git-utils, some small git-sucommands
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
 | version | git-utils release tag to install. Use latest to install the latest release. | string | latest |
-| install_dir | Directory where git-utils will be installed. | string | /usr/local/bin |
 
 
 
